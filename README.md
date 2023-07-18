@@ -75,3 +75,23 @@
 </div>
 
 ###
+
+<h2 align="left">Formato dos arquivos CSV</h2>
+
+###
+
+<p align="left">Receita:</p>
+
+![image](https://github.com/ViniciusJPSilva/TSI-FinancialPlanning/assets/81810017/52776ae9-a91f-44af-91cc-0724f0b6b1a9)
+
+<p align="left">Despesa:</p>
+
+![image](https://github.com/ViniciusJPSilva/TSI-FinancialPlanning/assets/81810017/eeb8bf9b-8ef0-46cd-83b2-d09dec145760)
+
+<p align="left">Investimento:</p>
+
+![image](https://github.com/ViniciusJPSilva/TSI-FinancialPlanning/assets/81810017/d79e6032-69ed-418e-99cc-a1371678b1be)
+
+<p align="left">O cabeçalho é opcional em todos os arquivos.<br>Todos os dados são validados antes de serem inseridos no banco de dados.</p>
+
+###
