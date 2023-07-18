@@ -1,0 +1,8 @@
+DataDespesa;DiaPagamento;FormaPagamento;Descrição;Categoria;Valor;Situação
+05/06/2023;05/06;CD;Cinema;Lazer;14,50;Paga
+06/06/2023;10/06;CC;Gasolina;Automóvel;254,43;
+02/06/2023;02/06;Dinheiro;Feira;Alimentação;58,00;Paga
+02/06/2023;02/06;Pix;Dentista;Saúde;100,20;Paga
+15/05/2023;10/06;CC;Supermercado;Alimentação;820,25;
+03/06/2023;03/06;CD;Padaria;Alimentação;75,50;Paga
+03/06/2023;03/12;Pix;Viajem;Lazer;750,65;Paga

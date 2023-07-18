@@ -1,0 +1,65 @@
+CREATE SEQUENCE "seq-renda";
+CREATE SEQUENCE "seq-forma-pagamento";
+CREATE SEQUENCE "seq-categoria";
+CREATE SEQUENCE "seq-despesa";
+CREATE SEQUENCE "seq-investimento";
+
+CREATE TABLE renda (
+	codigo BIGINT NOT NULL DEFAULT NEXTVAL('seq-renda'),
+	descricao VARCHAR(256) NOT NULL UNIQUE,
+	CONSTRAINT PK_Renda PRIMARY KEY (codigo)
+);
+
+CREATE TABLE renda_mensal (
+	cod_renda BIGINT NOT NULL,
+	data DATE NOT NULL,
+	valor REAL NOT NULL,
+	CONSTRAINT PK_Renda_mensal PRIMARY KEY (cod_renda, data),
+	CONSTRAINT FK_Renda FOREIGN KEY (cod_renda) references renda ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE forma_pagamento (
+	codigo BIGINT NOT NULL DEFAULT NEXTVAL('seq-forma-pagamento'),
+	descricao VARCHAR(256) NOT NULL UNIQUE,
+	CONSTRAINT PK_Forma_pagamento PRIMARY KEY (codigo)
+);
+
+CREATE TABLE categoria (
+	codigo BIGINT NOT NULL DEFAULT NEXTVAL('seq-categoria'),
+	descricao VARCHAR(256) NOT NULL UNIQUE,
+	CONSTRAINT PK_Categoria PRIMARY KEY (codigo)
+);
+
+CREATE TABLE despesa (
+	codigo BIGINT NOT NULL DEFAULT NEXTVAL('seq-despesa'),
+	descricao VARCHAR(256) NOT NULL UNIQUE,
+	cod_categoria BIGINT NOT NULL,
+	CONSTRAINT PK_Despesa PRIMARY KEY (codigo),
+	CONSTRAINT FK_Categoria FOREIGN KEY (cod_categoria) references categoria ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE orcamento (
+	mes_ano VARCHAR(7) NOT NULL,
+	cod_despesa BIGINT NOT NULL,
+	data_despesa DATE NOT NULL,
+	data_pagamento DATE,
+	cod_forma_pagamento BIGINT NOT NULL,
+	valor REAL NOT NULL,
+	situacao BOOLEAN NOT NULL,
+	CONSTRAINT PK_Orcamento PRIMARY KEY (mes_ano, cod_despesa),
+	CONSTRAINT FK_Despesa FOREIGN KEY (cod_despesa) references despesa ON DELETE CASCADE ON UPDATE CASCADE,
+	CONSTRAINT FK_Forma_pagamento FOREIGN KEY (cod_forma_pagamento) references forma_pagamento ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE investimento (
+	codigo BIGINT NOT NULL DEFAULT NEXTVAL('seq-investimento'),
+	objetivo VARCHAR(128) NOT NULL,
+	estrategia VARCHAR(64) NOT NULL,
+	nome VARCHAR(128) NOT NULL,
+	valor_investido REAL NOT NULL,
+	posicao REAL NOT NULL,
+	rendimento_bruto REAL NOT NULL,
+	rentabilidade REAL NOT NULL,
+	vencimento DATE NOT NULL,
+	CONSTRAINT PK_Investimento PRIMARY KEY (codigo)
+);

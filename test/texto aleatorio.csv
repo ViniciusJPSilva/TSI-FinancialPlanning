@@ -1,0 +1,22 @@
+private void importFiles() {
+		List<String> files = IgFileChooser.openFileDialog(this, FINANCIAL_PLANNING);
+		long count = 0;
+		
+		if(files == null) return;
+		
+		for(String fileName : files) {
+			List<Line> lines = Reader.read(fileName, SEMI_COLON);
+			
+			FILE fileType = identifyFileDataType(lines.get(0));
+			lines.remove(0); // Remove o cabeçalho
+			
+			switch (fileType) {
+				case REVENUE: 
+					for(Line line : lines)
+						count += persistRevenue(getRevenueFromline(line));
+					break;
+				default:
+			}
+		}
+		InputOutput.showInfo(String.format("Total de dados persistidos: %,d", count), FINANCIAL_PLANNING);
+	}
